@@ -104,7 +104,7 @@ public class Register
      * @param title of the literature.
      * @return an iterator of the collection.
      */
-    public Iterator<Literature> searchByType(String title)
+    public Iterator<Literature> searchByTitle(String title)
     {
         ArrayList<Literature> list = new ArrayList<>();
         for(Literature lit: collection)
