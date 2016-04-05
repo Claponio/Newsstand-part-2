@@ -36,7 +36,7 @@ public class Application
      */
     public Iterator<Literature> getAllLiterature()
     {
-        return register.getCollection;
+        return register.getCollection();
     }
     
     /**
@@ -100,7 +100,7 @@ public class Application
     public void addNewspaper(String title, String publisher, int issueNumber, String genre, double price)
     {
         
-       register.addLiterature(new Newspaper(title, publisher, issueNumber, genre));
+       register.addLiterature(new Newspaper(title, publisher, issueNumber, genre, price));
         
     }
     
@@ -126,6 +126,7 @@ public class Application
      * 
      * @param title of the literature
      */
+    //TODO: while løkke for å fikse problemet, search by title returnerer iterator
     public void removeLiterature(String title)
     {
         register.removeLiterature(searchByTitle(title));

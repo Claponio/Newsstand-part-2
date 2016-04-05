@@ -66,22 +66,24 @@ class AppInterface
                             Literature literature = iterator.next();
                             if(literature instanceof Newspaper)
                             {
+                                Newspaper newspaper = (Newspaper)literature;
                                 System.out.println("Newspaper: " + 
-                                                   "\nTitle:" + (Newspaper)literature.getTitle() +
-                                                   "\nPublisher: " + (Newspaper)literature.getPublisher() +
-                                                   "\nIsuue: " + (Newspaper)literature.getIssueNumber() +
-                                                   "\nGenre: " + (Newspaper)literature.getGenre() +
-                                                   "\nPrice: " + (Newspaper)literature.getPrice());
+                                                   "\nTitle:" + newspaper.getTitle() +
+                                                   "\nPublisher: " + newspaper.getPublisher() +
+                                                   "\nIsuue: " + newspaper.getIssueNumber() +
+                                                   "\nGenre: " + newspaper.getGenre() +
+                                                   "\nPrice: " + newspaper.getPrice());
                             }
                             else if(literature instanceof Book)
                             {
+                                Book book = (Book)literature;
                                 System.out.println("Book:" + 
-                                                   "\nTitle:" + (Book)literature.getTitle() + 
-                                                   "\nAuthor: " + (Book)literature.getPublisher() + 
-                                                   "\nPublisher: " + (Book)literature.getPublisher() +
-                                                   "\nEdition: " + (Book)literature.getEdition() +
-                                                   "\nGenre: " + (Book)literature.getGenre() +
-                                                   "\nPrice: " + (Book)literature.getPrice());
+                                                   "\nTitle:" + book.getTitle() + 
+                                                   "\nAuthor: " + book.getPublisher() + 
+                                                   "\nPublisher: " + book.getPublisher() +
+                                                   "\nEdition: " + book.getEdition() +
+                                                   "\nGenre: " + book.getGenre() +
+                                                   "\nPrice: " + book.getPrice());
                             }
                         }
 
@@ -121,7 +123,7 @@ class AppInterface
                         String title = inputScanner.getFirstWord();
                         System.out.println("\nPlease insert author of paper \n  ");
                         String publisher = inputScanner.getFirstWord();
-                        String newspaperInfo = this.application.getSpecificNewspaper(title, publisher);
+                        String newspaperInfo = this.application.searchByTitleAndPublisher(title, publisher);
                         System.out.println(newspaperInfo + "\n");
                         menuSelection = this.defaultMenuPosition;
                         break;
