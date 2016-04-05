@@ -34,7 +34,7 @@ public class Application
      * 
      * 
      */
-    public Iterator<literature> getAllLiterature()
+    public Iterator<Literature> getAllLiterature()
     {
         return register.getCollection;
     }
