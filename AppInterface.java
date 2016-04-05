@@ -60,7 +60,7 @@ class AppInterface
                     //lists all products
                     case 1:
                         System.out.println("\nProducts: \n");
-                        Iterator iterator = application.getAllLiterature();
+                        Iterator<Literature> iterator = application.getAllLiterature();
                         while(iterator.hasNext())
                         {
                             Literature literature = iterator.next();

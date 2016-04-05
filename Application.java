@@ -79,7 +79,12 @@ public class Application
      */
     public void changePrice(String title, double price)
     {
-        register.searchByTitle(title).setPrice(price);
+        Iterator<Literature> iterator = register.searchByTitle(title);
+        while(iterator.hasNext())
+        {
+            Literature literature = iterator.next();
+            literature.setPrice(price);
+        }
        
     }
     
