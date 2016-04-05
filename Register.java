@@ -162,6 +162,6 @@ public class Register
     }
     
    
-    
+    //Tester å legge in kommentar. Morten sitter på telefonen sin.
             
 }
