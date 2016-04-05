@@ -1,5 +1,6 @@
 
 import java.util.InputMismatchException;
+import java.util.Iterator;
 
 /**
  * Makes up the user interface (text based) of the application. Responsible for
@@ -56,11 +57,34 @@ class AppInterface
                         menuSelection = inputScanner.menuSelection(4);
                         break;
                       
-                    //lists all products (currenttly only newspapers)
+                    //lists all products
                     case 1:
-                        //System.out.println("\nProducts: \n");
-                        System.out.println(this.application.getContentOfRegister() + "\n");
-                        menuSelection = this.defaultMenuPosition;
+                        System.out.println("\nProducts: \n");
+                        Iterator iterator = application.getAllLiterature();
+                        while(iterator.hasNext())
+                        {
+                            Literature literature = iterator.next();
+                            if(literature instanceof Newspaper)
+                            {
+                                System.out.println("Newspaper: " + 
+                                                   "\nTitle:" + (Newspaper)literature.getTitle() +
+                                                   "\nPublisher: " + (Newspaper)literature.getPublisher() +
+                                                   "\nIsuue: " + (Newspaper)literature.getIssueNumber() +
+                                                   "\nGenre: " + (Newspaper)literature.getGenre() +
+                                                   "\nPrice: " + (Newspaper)literature.getPrice());
+                            }
+                            else if(literature instanceof Book)
+                            {
+                                System.out.println("Book:" + 
+                                                   "\nTitle:" + (Book)literature.getTitle() + 
+                                                   "\nAuthor: " + (Book)literature.getPublisher() + 
+                                                   "\nPublisher: " + (Book)literature.getPublisher() +
+                                                   "\nEdition: " + (Book)literature.getEdition() +
+                                                   "\nGenre: " + (Book)literature.getGenre() +
+                                                   "\nPrice: " + (Book)literature.getPrice());
+                            }
+                        }
+
                         break;
 
                     //enters register submenu where you choose what to register
@@ -84,7 +108,7 @@ class AppInterface
                                 System.out.println("placeholder");
                                 break;
                                 
-                            //goes back to default position ion main menu
+                            //goes back to default position in main menu
                             case 4:
                                 menuSelection = this.defaultMenuPosition;
 

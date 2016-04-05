@@ -1,4 +1,7 @@
 
+import java.util.Iterator;
+
+
 
 /**
  * Class Application - the class teth connects the UserInterface with the
@@ -11,7 +14,7 @@
  */
 public class Application
 {
-    Register newspaperRegister;
+    Register register;
        
     /**
      * Creates the registers the application: Newsstand needs, ex. 
@@ -20,88 +23,107 @@ public class Application
     public Application()
     {
         
-        newspaperRegister = new Register();
+        register = new Register();
         
     }
     
   
     
     /**
-     * returns the information about all the content in the chosen register, sorted
-     * after Author/Publisher and title/name.
+     * returns all the literature in the register
      * 
      * 
-     * //@param  register, name of the register the user want to display content off.
-     * @return content of the register the user want to display.
-     * 
-     * //TODO: in next build add parameter (Register register) Bc.
-     * we will expand with more registers.
      */
-    public String getContentOfRegister()
+    public Iterator<literature> getAllLiterature()
     {
-        String content = "";
-        content += newspaperRegister.displayCollection();
-        
-        return content;
+        return register.getCollection;
     }
     
     /**
-     * returns all the newspappers from the publiser which is searched for.
+     * returns all the Literature from by a specific publisher
      * 
-     * @return newspapers from one publisher
+     * @return all Literature from one publisher
      */
-    public String getSpecificPublisher(String publisher)
+    public Iterator<Literature> searchByPublisher(String publisher)
     {
-        String publisherInfo = "";
-        publisherInfo += newspaperRegister.searchAllFromPublisher(publisher);
-        
-        return publisherInfo;
+        return register.searchByPublisher(publisher);
     }
     
     /**
-     * returns the newspaper with the given title and publisher if it excists.
+     * returns the Literature with the given title and publisher if it excists.
      * 
      * @return returns the newspaper with the given title 
      */
-    public String getSpecificNewspaper(String title, String publisher)
+    public Iterator<Literature> searchByTitleAndPublisher(String title, String publisher)
     {
-        String newspaperInfo = "";
-        newspaperInfo += newspaperRegister.searchForNewspaper(title, publisher);
-        
-
-        return newspaperInfo;  
+        return register.searchByTitleAndPublisher(title, publisher);
+    }
+    
+    
+    /**
+     * 
+     * @param title
+     * @return 
+     */
+    public Iterator<Literature> searchByTitle(String title)
+    {
+        return register.searchByTitle(title);
     }
     
 
     /**
-     * Changes the price of the paper the user enters the title to.
+     * Changes the price of the Literature
      * 
      * @param title of the paper which the user want to change the price of.
-     * @param price you want to set.
+     * @param new price you want to set.
      */
-    public void setNewspaperPrice(String title,double price)
+    public void changePrice(String title, double price)
     {
-        newspaperRegister.setPrice(title, price);
+        register.searchByTitle(title).setPrice(price);
        
     }
     
     /**
-     * Adds a newspaper to the newspaper register with use of the title, publisher,
-     * issue number and genre.
+     * Adds a newspaper to the register
      * 
      * @param title of the newspaper
      * @param publisher of the newspaper
      * @param issueNumber, the sequence number of the paper by the year
      * @param genre of the newspaper
+     * @param price of the paper
      */
-    public void addNewspaper(String title, String publisher, int issueNumber, String genre)
+    public void addNewspaper(String title, String publisher, int issueNumber, String genre, double price)
     {
         
-       newspaperRegister.addNewspaper(title, publisher, issueNumber, genre);
+       register.addLiterature(new Newspaper(title, publisher, issueNumber, genre));
         
     }
     
     
-    //TODO: implement Remove function for newspaperRegister.
+    /**
+     * Adds a book to the register
+     * 
+     * @param title of the book 
+     * @param author of the book 
+     * @param publisher of the book 
+     * @param genre of the book 
+     * @param edition of the book 
+     * @param price of the book 
+     */
+    public void addBook(String title, String author, String publisher, String genre, int edition, double price)
+    {
+       register.addLiterature(new Book(title, publisher, price, genre, edition, author));
+    }
+    
+    
+    /**
+     * remove a piece of literature
+     * 
+     * @param title of the literature
+     */
+    public void removeLiterature(String title)
+    {
+        register.removeLiterature(searchByTitle(title));
+    }
     
 }
