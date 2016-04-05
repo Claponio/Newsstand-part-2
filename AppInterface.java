@@ -123,8 +123,33 @@ class AppInterface
                         String title = inputScanner.getFirstWord();
                         System.out.println("\nPlease insert author of paper \n  ");
                         String publisher = inputScanner.getFirstWord();
-                        String newspaperInfo = this.application.searchByTitleAndPublisher(title, publisher);
-                        System.out.println(newspaperInfo + "\n");
+                        Iterator<Literature> results = application.searchByTitleAndPublisher(title, publisher);
+                        while(results.hasNext())
+                        {
+                            //TODO: fix code replication
+                            Literature literature = results.next();
+                            if(literature instanceof Newspaper)
+                            {
+                                Newspaper newspaper = (Newspaper)literature;
+                                System.out.println("Newspaper: " + 
+                                                   "\nTitle:" + newspaper.getTitle() +
+                                                   "\nPublisher: " + newspaper.getPublisher() +
+                                                   "\nIsuue: " + newspaper.getIssueNumber() +
+                                                   "\nGenre: " + newspaper.getGenre() +
+                                                   "\nPrice: " + newspaper.getPrice());
+                            }
+                            else if(literature instanceof Book)
+                            {
+                                Book book = (Book)literature;
+                                System.out.println("Book:" + 
+                                                   "\nTitle:" + book.getTitle() + 
+                                                   "\nAuthor: " + book.getPublisher() + 
+                                                   "\nPublisher: " + book.getPublisher() +
+                                                   "\nEdition: " + book.getEdition() +
+                                                   "\nGenre: " + book.getGenre() +
+                                                   "\nPrice: " + book.getPrice());
+                            }
+                        }
                         menuSelection = this.defaultMenuPosition;
                         break;
 

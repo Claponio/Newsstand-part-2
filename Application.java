@@ -129,7 +129,11 @@ public class Application
     //TODO: while løkke for å fikse problemet, search by title returnerer iterator
     public void removeLiterature(String title)
     {
-        register.removeLiterature(searchByTitle(title));
+        Iterator<Literature> iterator = searchByTitle(title);
+        while(iterator.hasNext())
+        {
+            register.removeLiterature(iterator.next());
+        }
     }
     
 }
