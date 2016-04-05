@@ -12,13 +12,13 @@ import java.util.Iterator;
 class AppInterface
 {
 
-    private Application application;
+    private final Application application;
     //scanner for user input
-    private InputScanner inputScanner;
+    private final InputScanner inputScanner;
     //use to keep track of where in the main menu we are
     private int menuSelection;
     //default position in menu
-    private int defaultMenuPosition;
+    private final int defaultMenuPosition;
 
     /**
      * Creates an instance of the AppInterface User interface. An instance
