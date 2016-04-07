@@ -67,16 +67,14 @@ public class Book extends Literature
      * @return The title to the book series
      * @throws NotASeriesException if the book is not part of a series 
      */
-    public String seriesTitle() throws NotASeriesException
+    public String getSeriesTitle() throws NotASeriesException
     {
         if(series == false)
         {
              throw new NotASeriesException();
         }
-        else
-        {
-            return seriesTitle();
-        }
+        
+            return this.seriesTitle;        
     }
     
     

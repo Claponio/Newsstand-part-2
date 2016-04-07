@@ -14,7 +14,7 @@ import java.util.Iterator;
  */
 public class Application
 {
-    Register register;
+    private Register register;
        
     /**
      * Creates the registers the application: Newsstand needs, ex. 
@@ -61,6 +61,7 @@ public class Application
     
     
     /**
+     * returns the Literature with the given title it it excists.
      * 
      * @param title
      * @return 
@@ -72,19 +73,29 @@ public class Application
     
 
     /**
-     * Changes the price of the Literature
+     * Changes the price of the Literature if price is positive
      * 
-     * @param title of the paper which the user want to change the price of.
+     * @param title of the literature which the user want to change the price of.
      * @param new price you want to set.
      */
-    public void changePrice(String title, double price)
+    public boolean changePrice(String title, double price)
     {
+        boolean succesfull = false;
+        
+        if (price <= 0)
+        {
+            return succesfull;
+        }
+        
         Iterator<Literature> iterator = register.searchByTitle(title);
         while(iterator.hasNext())
         {
+            succesfull = true;
             Literature literature = iterator.next();
             literature.setPrice(price);
         }
+        
+        return succesfull;
        
     }
     
