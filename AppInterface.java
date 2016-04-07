@@ -61,6 +61,12 @@ class AppInterface
                     case 1:
                         System.out.println("\nProducts: \n");
                         Iterator<Literature> iterator = application.getAllLiterature();
+                        
+                        if(!iterator.hasNext())
+                        {
+                            System.out.println("No registered literature");
+                        }
+                        
                         while(iterator.hasNext())
                         {
                             Literature literature = iterator.next();
@@ -85,8 +91,10 @@ class AppInterface
                                                    "\nGenre: " + book.getGenre() +
                                                    "\nPrice: " + book.getPrice());
                             }
+                            
                         }
-
+                        
+                        menuSelection = this.defaultMenuPosition;
                         break;
 
                     //enters register submenu where you choose what to register
