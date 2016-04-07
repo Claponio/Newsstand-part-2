@@ -11,9 +11,10 @@
 public class Book extends Literature
 {
     //Fields for the book class
-    private int edition;            // Edition of the book
-    private String author;          //Author of the book
-    private String seriesTitle;     //Title of the book series, if it's part of a series
+    private int edition;            // Edition of the book.
+    private String author;          //Author of the book.
+    private String seriesTitle;     //Title of the book series, if it's part of a series.
+    private String seriesDate;      //Date of the publishing of the book in a series.
     private Boolean series;         //If true the book is part of a series.
     
     
@@ -80,14 +81,17 @@ public class Book extends Literature
     
     
     /**
-     * Adds the book to a book series, sets the series to true and adds a series title.
+     * Adds the book to a book series, sets the series to true and adds a series title and the
+     * date the book is published.
      * 
      * @param seriesTitle 
+     * @param seriesBookDate
      */
-    public void makeToSeries(String seriesTitle)
+    public void makeToSeries(String seriesTitle, String SeriesBookDate)
     {
         this.series = true;
         this.seriesTitle = seriesTitle;
+        this.seriesDate = SeriesBookDate;
     }
     
     

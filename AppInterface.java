@@ -21,8 +21,8 @@ class AppInterface
     private final int defaultMenuPosition;
 
     /**
-     * Creates an instance of the AppInterface User interface. An instance
-     * of the AppInterface is created, and initialized.
+     * Creates an instance of the AppInterface User interface. An instance of
+     * the AppInterface is created, and initialized.
      */
     public AppInterface()
     {
@@ -31,7 +31,7 @@ class AppInterface
         this.inputScanner = new InputScanner();
         this.defaultMenuPosition = 0;
         this.menuSelection = 0;
-        
+
     }
 
     /**
@@ -56,109 +56,97 @@ class AppInterface
                         this.printMainMenu();
                         menuSelection = inputScanner.menuSelection(4);
                         break;
-                      
+
                     //lists all products
                     case 1:
-                        System.out.println("\nProducts: \n");
                         Iterator<Literature> iterator = application.getAllLiterature();
-                        
-                        if(!iterator.hasNext())
+                        this.isEmpty(iterator);
+                        while (iterator.hasNext())
                         {
-                            System.out.println("No registered literature");
+                            this.printLiteratureInfo(iterator.next());
                         }
-                        
-                        while(iterator.hasNext())
-                        {
-                            Literature literature = iterator.next();
-                            if(literature instanceof Newspaper)
-                            {
-                                Newspaper newspaper = (Newspaper)literature;
-                                System.out.println("Newspaper: " + 
-                                                   "\nTitle:" + newspaper.getTitle() +
-                                                   "\nPublisher: " + newspaper.getPublisher() +
-                                                   "\nIsuue: " + newspaper.getIssueNumber() +
-                                                   "\nGenre: " + newspaper.getGenre() +
-                                                   "\nPrice: " + newspaper.getPrice());
-                            }
-                            else if(literature instanceof Book)
-                            {
-                                Book book = (Book)literature;
-                                System.out.println("Book:" + 
-                                                   "\nTitle:" + book.getTitle() + 
-                                                   "\nAuthor: " + book.getPublisher() + 
-                                                   "\nPublisher: " + book.getPublisher() +
-                                                   "\nEdition: " + book.getEdition() +
-                                                   "\nGenre: " + book.getGenre() +
-                                                   "\nPrice: " + book.getPrice());
-                            }
-                            
-                        }
-                        
+                        this.returnToMainMenu();
                         menuSelection = this.defaultMenuPosition;
                         break;
 
-                    //enters register submenu where you choose what to register
+                    //register submenu
                     case 2:
                         this.printRegisterSubMenu();
                         int registerSubMenuSelection = inputScanner.menuSelection(4);
                         switch (registerSubMenuSelection)
                         {
                             case 1:
-                                System.out.println("placeholder");
-                                //this.application.doRegisterNewspaper();
+                                System.out.println("Register newspaper");
                                 break;
-                                
+
                             case 2:
                                 //TODO: add method for registering different product
-                                System.out.println("placeholder");
+                                System.out.println("Register book");
                                 break;
 
                             case 3:
                                 //TODO: add method for registering different product
                                 System.out.println("placeholder");
                                 break;
-                                
+
                             //goes back to default position in main menu
                             case 4:
                                 menuSelection = this.defaultMenuPosition;
-
+                                break;
                         }
                         break;
 
-                    //find product by description, more search options will be added in own submenu
+                    //search submenu
                     case 3:
-                        System.out.println("\nPlease insert name of literature \n  ");
-                        String title = inputScanner.getFirstWord();
-                        System.out.println("\nPlease insert publisher of literature \n  ");
-                        String publisher = inputScanner.getFirstWord();
-                        Iterator<Literature> results = application.searchByTitleAndPublisher(title, publisher);
-                        while(results.hasNext())
+                        this.printFindProductSubMenu();
+                        int FindProductSubmenuSelection = inputScanner.menuSelection(4);
+                        switch (FindProductSubmenuSelection)
                         {
-                            //TODO: fix code replication
-                            Literature literature = results.next();
-                            if(literature instanceof Newspaper)
-                            {
-                                Newspaper newspaper = (Newspaper)literature;
-                                System.out.println("Newspaper: " + 
-                                                   "\nTitle:" + newspaper.getTitle() +
-                                                   "\nPublisher: " + newspaper.getPublisher() +
-                                                   "\nIsuue: " + newspaper.getIssueNumber() +
-                                                   "\nGenre: " + newspaper.getGenre() +
-                                                   "\nPrice: " + newspaper.getPrice());
-                            }
-                            else if(literature instanceof Book)
-                            {
-                                Book book = (Book)literature;
-                                System.out.println("Book:" + 
-                                                   "\nTitle:" + book.getTitle() + 
-                                                   "\nAuthor: " + book.getPublisher() + 
-                                                   "\nPublisher: " + book.getPublisher() +
-                                                   "\nEdition: " + book.getEdition() +
-                                                   "\nGenre: " + book.getGenre() +
-                                                   "\nPrice: " + book.getPrice());
-                            }
+                            case 1:
+                                Iterator<Literature> results1 = application.searchByTitle(this.getTitle());
+                                this.isEmpty(results1);
+                                while (results1.hasNext())
+                                {
+                                    this.printLiteratureInfo(results1.next());
+                                }
+                                if (this.returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
+                                break;
+
+                            case 2:
+                                Iterator<Literature> results2 = application.searchByPublisher(this.getTitle());
+                                this.isEmpty(results2);
+                                while (results2.hasNext())
+                                {
+                                    this.printLiteratureInfo(results2.next());
+                                }
+                                if (this.returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
+                                break;
+
+                            case 3:
+                                Iterator<Literature> results3 = application.searchByTitleAndPublisher(this.getTitle(), this.getPublisher());
+                                this.isEmpty(results3);
+                                while (results3.hasNext())
+                                {
+                                    this.printLiteratureInfo(results3.next());
+                                }
+                                if (this.returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
+                                break;
+
+                            //goes back to default position in main menu
+                            case 4:
+                                menuSelection = this.defaultMenuPosition;
+                                break;
                         }
-                        menuSelection = this.defaultMenuPosition;
+
                         break;
 
                     //exit the application
@@ -174,14 +162,10 @@ class AppInterface
             {
                 System.out.println("\nERROR: Please provide a valid menu number..\n");
             }
-            catch(EmptyStringException ese)
-            {
-                System.out.println("\nERROR: please provide valid input");
-            }
+
         }
 
     }
-
 
     /**
      * Prints the main menu to system out.
@@ -191,26 +175,132 @@ class AppInterface
         System.out.println("\n**** Application v0.1 ****\n");
         System.out.println("1. List all products");
         System.out.println("2. Register new product");
-        System.out.println("3. Find a product by title and publisher");
+        System.out.println("3. Find a product by title and/or publisher");
         System.out.println("4. Exit\n");
         System.out.println("Please choose menu item (1-4): \n");
         System.out.print(">  ");
     }
-    
+
+    /**
+     * Prints the register submenu to system out
+     */
     private void printRegisterSubMenu()
     {
         System.out.println("What item do you want to register? \n");
         System.out.println("1. Register newspaper");
-        System.out.println("2. Placeholder different item");
+        System.out.println("2. Register book");
         System.out.println("3. Placeholder different item");
         System.out.println("4. Go back \n");
         System.out.println("Please choose menu item (1-4): \n");
         System.out.print(">  ");
     }
-    
+
+    /**
+     * Prints the search submenu to system out
+     */
     private void printFindProductSubMenu()
     {
-        //TODO: add print statements for menu
+        System.out.println("Which search function do you want to use? \n");
+        System.out.println("1. By title");
+        System.out.println("2. By publisher");
+        System.out.println("3. By title and publisher");
+        System.out.println("4. Go back \n");
+        System.out.println("Please choose menu item (1-4): \n");
+        System.out.print(">  ");
+    }
+
+    /**
+     * Prints all valid info from the literature parameter to system out
+     * @param literature you want to print information from
+     */
+    private void printLiteratureInfo(Literature literature)
+    {
+        if (literature instanceof Newspaper)
+        {
+            Newspaper newspaper = (Newspaper) literature;
+            System.out.println("Newspaper: "
+                    + "\nTitle:" + newspaper.getTitle()
+                    + "\nPublisher: " + newspaper.getPublisher()
+                    + "\nIsuue: " + newspaper.getIssueNumber()
+                    + "\nGenre: " + newspaper.getGenre()
+                    + "\nPrice: " + newspaper.getPrice());
+        }
+        else if (literature instanceof Book)
+        {
+            Book book = (Book) literature;
+            System.out.println("Book:"
+                    + "\nTitle:" + book.getTitle()
+                    + "\nAuthor: " + book.getPublisher()
+                    + "\nPublisher: " + book.getPublisher()
+                    + "\nEdition: " + book.getEdition()
+                    + "\nGenre: " + book.getGenre()
+                    + "\nPrice: " + book.getPrice());
+        }
+    }
+
+    /**
+     * Returns true if "yes" is inputted by user and false if "no" is. Prints: "Do you want to go back to main menu?" upon use
+     * and an error message if invalid statement is entered by user.
+     * @return Returns true if "yes" is inputted by user and false if "no" is
+     */
+    private boolean returnToMainMenu()
+    {
+        System.out.println("\nDo you want to go back to main menu?");
+        boolean choice = false;
+        boolean stop = false;
+        while (!stop)
+        {
+            try
+            {
+                System.out.print("\n>  ");
+                choice = inputScanner.getYesNoInput();
+                stop = true;
+            }
+            catch (InvalidInputStringException iise)
+            {
+                System.out.println("\nERROR: Only valid statements are yes or no");
+            }
+        }
+        return choice;
+    }
+
+    /**
+     * Checks if iterator is empty and prints error message if it is and "products" as header for whatever you choose
+     * to print next
+     * @param iterator you want print header for
+     */
+    private void isEmpty(Iterator<Literature> iterator)
+    {
+        if (!iterator.hasNext())
+        {
+            System.out.println("No registered literature");
+        }
+        else
+        {
+            System.out.println("\nProducts: \n");
+        }
+    }
+
+    /**
+     * Asks user for title and returns it
+     * @return title entered by user
+     */
+    private String getTitle()
+    {
+        System.out.println("\nPlease insert name of literature");
+        System.out.print("\n>  ");
+        return inputScanner.getFirstWord();
+    }
+
+    /**
+     * Asks user for publisher and returns it
+     * @return publisher entered by user
+     */
+    private String getPublisher()
+    {
+        System.out.println("\nPlease insert publisher of literature");
+        System.out.print("\n>  ");
+        return inputScanner.getFirstWord();
     }
 
 }
