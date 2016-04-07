@@ -41,32 +41,41 @@ public class InputScanner
      * returns first word entered by the user
      * @return first word entered by the user
      */
-    public String getFirstWord() throws EmptyStringException
+    public String getFirstWord()
     {
         Scanner scanner = new Scanner(System.in);
         String firstWord = scanner.next();
-        if(firstWord.isEmpty())
-        {
-            throw new EmptyStringException();
-        }
-        else
-        {
-            return firstWord; 
-        }
+        return firstWord; 
     }
     
-    public String getInput() throws EmptyStringException
+    public String getInput()
     {
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();
-        if(inputLine.isEmpty())
+        return inputLine; 
+
+    }
+    
+    /**
+     * Takes user input of yes or no and returns true or false accordingly
+     * @return true if user input is "yes" and false if "no"
+     * @throws InvalidInputStringException 
+     */
+    public boolean getYesNoInput() throws InvalidInputStringException
+    {
+        Scanner scanner = new Scanner(System.in);
+        String firstWord = scanner.next();
+        if(firstWord.equals("yes"))
         {
-            throw new EmptyStringException();
+            return true;
+        }
+        else if(firstWord.equals("no"))
+        {
+            return false;
         }
         else
         {
-            return inputLine; 
+            throw new InvalidInputStringException();
         }
-
     }
 }
