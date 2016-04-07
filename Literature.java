@@ -7,7 +7,7 @@
  * @author Morten
  * @version 1.0.0   05.04.2016
  */
-public class Literature
+public abstract class Literature 
 {
     private String title;           //Title of the literature
     private String publisher;       //Publisher of the literature
