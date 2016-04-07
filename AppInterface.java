@@ -76,17 +76,27 @@ class AppInterface
                         switch (registerSubMenuSelection)
                         {
                             case 1:
-                                System.out.println("Register newspaper");
+                                application.addNewspaper(this.getTitle(), this.getPublisher(), this.getIssueNumber(), this.getGenre(), this.getPrice());
+                                if (this.returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
                                 break;
 
                             case 2:
-                                //TODO: add method for registering different product
-                                System.out.println("Register book");
+                                application.addBook(this.getTitle(), this.getAuthor(), this.getPublisher(), this.getGenre(), this.getEdition(), this.getPrice());
+                                if (this.returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
                                 break;
 
                             case 3:
-                                //TODO: add method for registering different product
                                 System.out.println("placeholder");
+                                if (this.returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
                                 break;
 
                             //goes back to default position in main menu
@@ -149,8 +159,38 @@ class AppInterface
 
                         break;
 
-                    //exit the application
                     case 4:
+                        if (application.removeLiterature(this.getTitle()));
+                        {
+                            System.out.println("\nSuccessfully removed product!");
+                        }
+                        else
+                        {
+                            System.out.println("\nDid not find any litterature with that title");
+                        }
+                        if (this.returnToMainMenu())
+                        {
+                            menuSelection = this.defaultMenuPosition;
+                        }
+                        break;
+
+                    case 5:
+                        if (application.changePrice(this.getTitle(), this.getPrice()))
+                        {
+                            System.out.println("\nSuccessfully changed price of product");
+                        }
+                        else
+                        {
+                            System.out.println("\nInvalid price or title");
+                        }
+                        if (this.returnToMainMenu())
+                        {
+                            menuSelection = this.defaultMenuPosition;
+                        }
+                        break;
+
+                    //exit the application
+                    case 6:
                         System.out.println("\nThank you for using Application v0.1. Bye!\n");
                         quit = true;
                         break;
@@ -176,7 +216,9 @@ class AppInterface
         System.out.println("1. List all products");
         System.out.println("2. Register new product");
         System.out.println("3. Find a product by title and/or publisher");
-        System.out.println("4. Exit\n");
+        System.out.println("4. Remove product");
+        System.out.println("5. Change price of product");
+        System.out.println("6. Exit\n");
         System.out.println("Please choose menu item (1-4): \n");
         System.out.print(">  ");
     }
@@ -211,6 +253,7 @@ class AppInterface
 
     /**
      * Prints all valid info from the literature parameter to system out
+     *
      * @param literature you want to print information from
      */
     private void printLiteratureInfo(Literature literature)
@@ -239,8 +282,10 @@ class AppInterface
     }
 
     /**
-     * Returns true if "yes" is inputted by user and false if "no" is. Prints: "Do you want to go back to main menu?" upon use
-     * and an error message if invalid statement is entered by user.
+     * Returns true if "yes" is inputted by user and false if "no" is. Prints:
+     * "Do you want to go back to main menu?" upon use and an error message if
+     * invalid statement is entered by user.
+     *
      * @return Returns true if "yes" is inputted by user and false if "no" is
      */
     private boolean returnToMainMenu()
@@ -265,8 +310,9 @@ class AppInterface
     }
 
     /**
-     * Checks if iterator is empty and prints error message if it is and "products" as header for whatever you choose
-     * to print next
+     * Checks if iterator is empty and prints error message if it is and
+     * "products" as header for whatever you choose to print next
+     *
      * @param iterator you want print header for
      */
     private void isEmpty(Iterator<Literature> iterator)
@@ -283,6 +329,7 @@ class AppInterface
 
     /**
      * Asks user for title and returns it
+     *
      * @return title entered by user
      */
     private String getTitle()
@@ -294,6 +341,7 @@ class AppInterface
 
     /**
      * Asks user for publisher and returns it
+     *
      * @return publisher entered by user
      */
     private String getPublisher()
@@ -303,4 +351,61 @@ class AppInterface
         return inputScanner.getFirstWord();
     }
 
+    /**
+     * Asks user for price and returns the value as a double
+     *
+     * @return the new price the user wants to set
+     */
+    private double getPrice()
+    {
+        System.out.println("\nPlease insert new price of product");
+        System.out.print("\n>  ");
+        return inputScanner.getNextDouble();
+    }
+    
+    /**
+     * Asks the user for the issue number of the paper and returns it as an int
+     * 
+     * @return the issue number of the paper
+     */
+    private int getIssueNumber()
+    {
+        System.out.println("\nPlease insert issue number of the paper");
+        System.out.print("\n>  ");
+        return inputScanner.getNextInt();
+    }
+
+    /**
+     * Asks the user for the genre and returns it as string
+     * @return genre of the product
+     */
+    private String getGenre()
+    {
+        System.out.println("\nPlease insert genre of literature");
+        System.out.print("\n>  ");
+        return inputScanner.getFirstWord();
+    }
+    
+    /**
+     * Asks the user for the author and returns it as string
+     * @return author of the product
+     */
+    private String getAuthor()
+    {
+        System.out.println("\nPlease insert Author of literature");
+        System.out.print("\n>  ");
+        return inputScanner.getFirstWord();
+    }
+    
+    /**
+     * Asks the user for the edition and returns it as int
+     * @return edition of the product
+     */
+    private int getEdition()
+    {
+        System.out.println("\nPlease insert genre of literature");
+        System.out.print("\n>  ");
+        return inputScanner.getNextInt();
+    }
+    
 }

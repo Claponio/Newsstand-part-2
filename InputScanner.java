@@ -82,4 +82,19 @@ public class InputScanner
             throw new InvalidInputStringException();
         }
     }
+    
+    public double getNextDouble()
+    {
+        Scanner scanner = new Scanner(System.in);
+        double number = scanner.nextDouble();
+        return number;
+    }
+    
+    public int getNextInt()
+    {
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        return number;
+    }
+    
 }
