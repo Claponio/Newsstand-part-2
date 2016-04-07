@@ -119,9 +119,9 @@ class AppInterface
 
                     //find product by description, more search options will be added in own submenu
                     case 3:
-                        System.out.println("\nPlease insert name of paper \n  ");
+                        System.out.println("\nPlease insert name of literature \n  ");
                         String title = inputScanner.getFirstWord();
-                        System.out.println("\nPlease insert author of paper \n  ");
+                        System.out.println("\nPlease insert publisher of literature \n  ");
                         String publisher = inputScanner.getFirstWord();
                         Iterator<Literature> results = application.searchByTitleAndPublisher(title, publisher);
                         while(results.hasNext())
