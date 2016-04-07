@@ -1,6 +1,7 @@
 
 /**
- * Creats an object of Literature with the following information:
+ * abstract class Literature, an object of this class is created when a sub class
+ * creates an object. Information needed for this class is:
  * 
  * Title, Publisher, Genre, Price
  * 
