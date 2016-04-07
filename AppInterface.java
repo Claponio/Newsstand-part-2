@@ -181,6 +181,9 @@ class AppInterface
         System.out.print(">  ");
     }
 
+    /**
+     * Prints the register submenu to system out
+     */
     private void printRegisterSubMenu()
     {
         System.out.println("What item do you want to register? \n");
@@ -192,6 +195,9 @@ class AppInterface
         System.out.print(">  ");
     }
 
+    /**
+     * Prints the search submenu to system out
+     */
     private void printFindProductSubMenu()
     {
         System.out.println("Which search function do you want to use? \n");
@@ -203,6 +209,10 @@ class AppInterface
         System.out.print(">  ");
     }
 
+    /**
+     * Prints all valid info from the literature parameter to system out
+     * @param literature you want to print information from
+     */
     private void printLiteratureInfo(Literature literature)
     {
         if (literature instanceof Newspaper)
@@ -228,6 +238,11 @@ class AppInterface
         }
     }
 
+    /**
+     * Returns true if "yes" is inputted by user and false if "no" is. Prints: "Do you want to go back to main menu?" upon use
+     * and an error message if invalid statement is entered by user.
+     * @return Returns true if "yes" is inputted by user and false if "no" is
+     */
     private boolean returnToMainMenu()
     {
         System.out.println("\nDo you want to go back to main menu?");
@@ -249,6 +264,11 @@ class AppInterface
         return choice;
     }
 
+    /**
+     * Checks if iterator is empty and prints error message if it is and "products" as header for whatever you choose
+     * to print next
+     * @param iterator you want print header for
+     */
     private void isEmpty(Iterator<Literature> iterator)
     {
         if (!iterator.hasNext())
@@ -261,6 +281,10 @@ class AppInterface
         }
     }
 
+    /**
+     * Asks user for title and returns it
+     * @return title entered by user
+     */
     private String getTitle()
     {
         System.out.println("\nPlease insert name of literature");
@@ -268,6 +292,10 @@ class AppInterface
         return inputScanner.getFirstWord();
     }
 
+    /**
+     * Asks user for publisher and returns it
+     * @return publisher entered by user
+     */
     private String getPublisher()
     {
         System.out.println("\nPlease insert publisher of literature");

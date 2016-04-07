@@ -48,6 +48,10 @@ public class InputScanner
         return firstWord; 
     }
     
+    /**
+     * returns entire input line
+     * @return returns entire input line
+     */
     public String getInput()
     {
         Scanner scanner = new Scanner(System.in);
