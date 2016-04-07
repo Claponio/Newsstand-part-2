@@ -30,9 +30,10 @@ public class Application
   
     
     /**
-     * returns all the literature in the register
+     * returns an iterator of all the literature in the collection if 
+     * ther is any literature in the collection.
      * 
-     * 
+     * @return an iterator of all the literature in the collection.
      */
     public Iterator<Literature> getAllLiterature()
     {
@@ -40,9 +41,11 @@ public class Application
     }
     
     /**
-     * returns all the Literature from by a specific publisher
+     * Searches for literature by an given publisher and returns an 
+     * iterator of the literature by that publisher.
      * 
-     * @return all Literature from one publisher
+     * @param publisher  The publisher of the literature.
+     * @return all Literature from one publisher.
      */
     public Iterator<Literature> searchByPublisher(String publisher)
     {
@@ -50,9 +53,12 @@ public class Application
     }
     
     /**
-     * returns the Literature with the given title and publisher if it excists.
+     * Searches for literature by title and publisher, 
+     * returns an iterature of the given literature. 
      * 
-     * @return returns the newspaper with the given title 
+     * @param title  The title of the literature.
+     * @param publisher  The publisher of the literature.
+     * @return an iterator of the literature with the given parameters.
      */
     public Iterator<Literature> searchByTitleAndPublisher(String title, String publisher)
     {
@@ -61,10 +67,11 @@ public class Application
     
     
     /**
-     * returns the Literature with the given title it it excists.
+     * Searches for a pice of literature by titel and 
+     * returns the Literature with the given title it excists.
      * 
-     * @param title
-     * @return 
+     * @param title  The title of the of the literature.
+     * @return an itteratore of the collection Literature.
      */
     public Iterator<Literature> searchByTitle(String title)
     {
@@ -73,10 +80,11 @@ public class Application
     
 
     /**
-     * Changes the price of the Literature if price is positive
+     * Changes the price of the Literature if the price is a positive number.
      * 
-     * @param title of the literature which the user want to change the price of.
-     * @param new price you want to set.
+     * @param title  The title of the literature which the user want to change the price of.
+     * @param price  New price you want to set.
+     * @return succsesfull , returns true if the price was chaneged.
      */
     public boolean changePrice(String title, double price)
     {
@@ -100,13 +108,13 @@ public class Application
     }
     
     /**
-     * Adds a newspaper to the register
+     * Adds a newspaper to the register, with the needed parameters.
      * 
-     * @param title of the newspaper
-     * @param publisher of the newspaper
-     * @param issueNumber, the sequence number of the paper by the year
-     * @param genre of the newspaper
-     * @param price of the paper
+     * @param title  The title of the newspaper.
+     * @param publisher  The publisher of the newspaper.
+     * @param issueNumber  The sequence number of the paper by the year.
+     * @param genre  The genre of the newspaper.
+     * @param price  The price of the paper.
      */
     public void addNewspaper(String title, String publisher, int issueNumber, String genre, double price)
     {
@@ -117,14 +125,14 @@ public class Application
     
     
     /**
-     * Adds a book to the register
+     * Adds a book to the register, with the needed parameters.
      * 
-     * @param title of the book 
-     * @param author of the book 
-     * @param publisher of the book 
-     * @param genre of the book 
-     * @param edition of the book 
-     * @param price of the book 
+     * @param title  The title of the book.
+     * @param author  The author of the book.
+     * @param publisher  The publisher of the book. 
+     * @param genre  The genre of the book.
+     * @param edition  The edition of the book. 
+     * @param price  The price of the book.
      */
     public void addBook(String title, String author, String publisher, String genre, int edition, double price)
     {
@@ -133,17 +141,26 @@ public class Application
     
     
     /**
-     * remove a piece of literature
+     * Searches for the literature by title and removes it if it's found in the 
+     * collection. If not, it returns fals.
      * 
-     * @param title of the literature
+     * @param title of the literature.
+     * @return succesfull, returns true if literature was suucsesfully removed.
      */
-    public void removeLiterature(String title)
+    public boolean removeLiterature(String title)
     {
+        
+        boolean succesfull = false;
+        
+        
         Iterator<Literature> iterator = searchByTitle(title);
         while(iterator.hasNext())
         {
+            succesfull = true; 
             register.removeLiterature(iterator.next());
         }
+        return succesfull;
     }
     
+
 }

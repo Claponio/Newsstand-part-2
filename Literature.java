@@ -19,10 +19,10 @@ public abstract class Literature
     /**
      * Counstructer for objects of the class Literature
      * 
-     * @param title of the literature
-     * @param publisher of the literature
-     * @param price of the literature in NOK
-     * @param genre of the literature
+     * @param title  The title of the literature
+     * @param publisher The publisher of the literature
+     * @param price  The price of the literature in NOK
+     * @param genre  The genre of the literature
      */
     public Literature (String title, String publisher, double price, String genre)
     {
@@ -36,7 +36,7 @@ public abstract class Literature
     /**
      * Returns the title of the literature
      * 
-     * @return title of the literature
+     * @return title  The title of the literature
      */
     public String getTitle()
     {
@@ -47,7 +47,7 @@ public abstract class Literature
     /**
      * Returns the publisher of the literature.
      * 
-     * @return publisher of the literature.
+     * @return publisher  The title of the literature.
      */
     public String getPublisher()
     {
@@ -58,7 +58,7 @@ public abstract class Literature
     /**
      * Returns the genre of the literature.
      * 
-     * @return genre of the literature.
+     * @return genre  The genre of the literature.
      */
     public String getGenre()
     {
@@ -69,7 +69,7 @@ public abstract class Literature
     /**
      * Returns the price of the literature in NOK.
      * 
-     * @return price of the literature in NOK. 
+     * @return price  The price of the literature in NOK. 
      */
     public double getPrice()
     {
@@ -80,7 +80,7 @@ public abstract class Literature
     /**
      * Sets the price of the literature in NOK.
      * 
-     * @param price of the literature in NOK.
+     * @param price  The price of the literature in NOK.
      */
     public void setPrice(double price)
     {

@@ -21,12 +21,12 @@ public class Book extends Literature
     /**
      * Constructer for objects of the class Book
      * 
-     * @param title of book
-     * @param publisher of book
-     * @param price of book
-     * @param genre of book
-     * @param edition of book
-     * @param author of book
+     * @param title  The titel of book
+     * @param publisher  The publisher of book
+     * @param price  The price of book in NOK
+     * @param genre  The genre of book
+     * @param edition  The edition of book
+     * @param author  The author of book
      */
     public Book(String title, String publisher, double price, String genre, 
                 int edition, String author)
@@ -41,7 +41,7 @@ public class Book extends Literature
     /**
      * Returns the name of the author
      * 
-     * @return The name of author of the book
+     * @return author The name of author of the book
      */
     public String getAuthor()
     {
@@ -52,7 +52,7 @@ public class Book extends Literature
     /**
      * Returns the edition of the book
      * 
-     * @return The edition of the book 
+     * @return edition  The edition of the book 
      */
     public int getEdition()
     {
@@ -64,8 +64,8 @@ public class Book extends Literature
      * Returns the title of the book series if the book is part of a series, if not
      * it Throws the exception NotASeriesException.
      * 
-     * @return The title to the book series
-     * @throws NotASeriesException if the book is not part of a series 
+     * @return title  the title to the book series.
+     * @throws NotASeriesException if the book is not part of a series.
      */
     public String getSeriesTitle() throws NotASeriesException
     {
@@ -82,8 +82,8 @@ public class Book extends Literature
      * Adds the book to a book series, sets the series to true and adds a series title and the
      * date the book is published.
      * 
-     * @param seriesTitle 
-     * @param seriesBookDate
+     * @param seriesTitle  title of the book series.
+     * @param SeriesBookDate  date wich the book is published.
      */
     public void makeToSeries(String seriesTitle, String SeriesBookDate)
     {
