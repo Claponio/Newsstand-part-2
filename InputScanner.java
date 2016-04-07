@@ -2,12 +2,9 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
+ * 
+ * Class for scanning user input with methods tailored for the appInterface class
  *
  * @author Vegard Fjørtoft
  */

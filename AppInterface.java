@@ -54,7 +54,7 @@ class AppInterface
                     //default
                     case 0:
                         this.printMainMenu();
-                        menuSelection = inputScanner.menuSelection(4);
+                        menuSelection = inputScanner.menuSelection(6);
                         break;
 
                     //lists all products
@@ -77,6 +77,7 @@ class AppInterface
                         {
                             case 1:
                                 application.addNewspaper(this.getTitle(), this.getPublisher(), this.getIssueNumber(), this.getGenre(), this.getPrice());
+                                System.out.println("\nNewspaper added");
                                 if (this.returnToMainMenu())
                                 {
                                     menuSelection = this.defaultMenuPosition;
@@ -85,6 +86,7 @@ class AppInterface
 
                             case 2:
                                 application.addBook(this.getTitle(), this.getAuthor(), this.getPublisher(), this.getGenre(), this.getEdition(), this.getPrice());
+                                System.out.println("\nBook added");
                                 if (this.returnToMainMenu())
                                 {
                                     menuSelection = this.defaultMenuPosition;
@@ -160,7 +162,7 @@ class AppInterface
                         break;
 
                     case 4:
-                        if (application.removeLiterature(this.getTitle()));
+                        if (application.removeLiterature(this.getTitle()))
                         {
                             System.out.println("\nSuccessfully removed product!");
                         }
@@ -267,6 +269,7 @@ class AppInterface
                     + "\nIsuue: " + newspaper.getIssueNumber()
                     + "\nGenre: " + newspaper.getGenre()
                     + "\nPrice: " + newspaper.getPrice());
+            System.out.println();
         }
         else if (literature instanceof Book)
         {
@@ -278,6 +281,7 @@ class AppInterface
                     + "\nEdition: " + book.getEdition()
                     + "\nGenre: " + book.getGenre()
                     + "\nPrice: " + book.getPrice());
+            System.out.println();
         }
     }
 
@@ -403,7 +407,7 @@ class AppInterface
      */
     private int getEdition()
     {
-        System.out.println("\nPlease insert genre of literature");
+        System.out.println("\nPlease insert edition of literature (number)");
         System.out.print("\n>  ");
         return inputScanner.getNextInt();
     }
