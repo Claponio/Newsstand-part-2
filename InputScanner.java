@@ -80,6 +80,10 @@ public class InputScanner
         }
     }
     
+    /**
+     * Returns the next decimal number inputted by the user
+     * @return Returns the next decimal number inputted by the user
+     */
     public double getNextDouble()
     {
         Scanner scanner = new Scanner(System.in);
@@ -87,6 +91,10 @@ public class InputScanner
         return number;
     }
     
+    /**
+     * Returns the next whole number inputted by the user
+     * @return Returns the next whole number inputted by the user
+     */
     public int getNextInt()
     {
         Scanner scanner = new Scanner(System.in);
