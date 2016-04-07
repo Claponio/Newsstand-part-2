@@ -69,20 +69,19 @@ class AppInterface
                         menuSelection = this.defaultMenuPosition;
                         break;
 
-                    //enters register submenu where you choose what to register
+                    //register submenu
                     case 2:
                         this.printRegisterSubMenu();
                         int registerSubMenuSelection = inputScanner.menuSelection(4);
                         switch (registerSubMenuSelection)
                         {
                             case 1:
-                                System.out.println("placeholder");
-                                //this.application.doRegisterNewspaper();
+                                System.out.println("Register newspaper");
                                 break;
 
                             case 2:
                                 //TODO: add method for registering different product
-                                System.out.println("placeholder");
+                                System.out.println("Register book");
                                 break;
 
                             case 3:
@@ -97,30 +96,44 @@ class AppInterface
                         }
                         break;
 
-                    //find product by description, more search options will be added in own submenu
+                    //search submenu
                     case 3:
                         this.printFindProductSubMenu();
                         int FindProductSubmenuSelection = inputScanner.menuSelection(4);
                         switch (FindProductSubmenuSelection)
                         {
                             case 1:
-                                System.out.println("placeholder");
-                                //this.application.doRegisterNewspaper();
+                                Iterator<Literature> results1 = application.searchByTitle(this.getTitle());
+                                isEmpty(results1);
+                                while (results1.hasNext())
+                                {
+                                    printLiteratureInfo(results1.next());
+                                }
+                                if (returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
                                 break;
 
                             case 2:
-                                //TODO: add method for registering different product
-                                System.out.println("placeholder");
+                                Iterator<Literature> results2 = application.searchByPublisher(this.getTitle());
+                                isEmpty(results2);
+                                while (results2.hasNext())
+                                {
+                                    printLiteratureInfo(results2.next());
+                                }
+                                if (returnToMainMenu())
+                                {
+                                    menuSelection = this.defaultMenuPosition;
+                                }
                                 break;
 
                             case 3:
-//                                String title = this.getTitle();
-//                                String publisher = this.getPublisher();
-                                Iterator<Literature> results = application.searchByTitleAndPublisher(this.getTitle(), this.getPublisher());
-                                isEmpty(results);
-                                while (results.hasNext())
+                                Iterator<Literature> results3 = application.searchByTitleAndPublisher(this.getTitle(), this.getPublisher());
+                                isEmpty(results3);
+                                while (results3.hasNext())
                                 {
-                                    printLiteratureInfo(results.next());
+                                    printLiteratureInfo(results3.next());
                                 }
                                 if (returnToMainMenu())
                                 {
@@ -162,7 +175,7 @@ class AppInterface
         System.out.println("\n**** Application v0.1 ****\n");
         System.out.println("1. List all products");
         System.out.println("2. Register new product");
-        System.out.println("3. Find a product by title and publisher");
+        System.out.println("3. Find a product by title and/or publisher");
         System.out.println("4. Exit\n");
         System.out.println("Please choose menu item (1-4): \n");
         System.out.print(">  ");

@@ -126,7 +126,6 @@ public class Application
      * 
      * @param title of the literature
      */
-    //TODO: while løkke for å fikse problemet, search by title returnerer iterator
     public void removeLiterature(String title)
     {
         Iterator<Literature> iterator = searchByTitle(title);
