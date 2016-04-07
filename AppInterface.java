@@ -60,12 +60,12 @@ class AppInterface
                     //lists all products
                     case 1:
                         Iterator<Literature> iterator = application.getAllLiterature();
-                        isEmpty(iterator);
+                        this.isEmpty(iterator);
                         while (iterator.hasNext())
                         {
-                            printLiteratureInfo(iterator.next());
+                            this.printLiteratureInfo(iterator.next());
                         }
-                        returnToMainMenu();
+                        this.returnToMainMenu();
                         menuSelection = this.defaultMenuPosition;
                         break;
 
@@ -104,12 +104,12 @@ class AppInterface
                         {
                             case 1:
                                 Iterator<Literature> results1 = application.searchByTitle(this.getTitle());
-                                isEmpty(results1);
+                                this.isEmpty(results1);
                                 while (results1.hasNext())
                                 {
-                                    printLiteratureInfo(results1.next());
+                                    this.printLiteratureInfo(results1.next());
                                 }
-                                if (returnToMainMenu())
+                                if (this.returnToMainMenu())
                                 {
                                     menuSelection = this.defaultMenuPosition;
                                 }
@@ -117,12 +117,12 @@ class AppInterface
 
                             case 2:
                                 Iterator<Literature> results2 = application.searchByPublisher(this.getTitle());
-                                isEmpty(results2);
+                                this.isEmpty(results2);
                                 while (results2.hasNext())
                                 {
-                                    printLiteratureInfo(results2.next());
+                                    this.printLiteratureInfo(results2.next());
                                 }
-                                if (returnToMainMenu())
+                                if (this.returnToMainMenu())
                                 {
                                     menuSelection = this.defaultMenuPosition;
                                 }
@@ -130,12 +130,12 @@ class AppInterface
 
                             case 3:
                                 Iterator<Literature> results3 = application.searchByTitleAndPublisher(this.getTitle(), this.getPublisher());
-                                isEmpty(results3);
+                                this.isEmpty(results3);
                                 while (results3.hasNext())
                                 {
-                                    printLiteratureInfo(results3.next());
+                                    this.printLiteratureInfo(results3.next());
                                 }
-                                if (returnToMainMenu())
+                                if (this.returnToMainMenu())
                                 {
                                     menuSelection = this.defaultMenuPosition;
                                 }
