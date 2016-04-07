@@ -177,7 +177,7 @@ class AppInterface
                     case 5:
                         if (application.changePrice(this.getTitle(), this.getPrice()))
                         {
-                            System.out.println("Successfully vhanged price of product");
+                            System.out.println("\nSuccessfully changed price of product");
                         }
                         else
                         {
