@@ -221,7 +221,7 @@ class AppInterface
         System.out.println("4. Remove product");
         System.out.println("5. Change price of product");
         System.out.println("6. Exit\n");
-        System.out.println("Please choose menu item (1-4): \n");
+        System.out.println("Please choose menu item (1-6): \n");
         System.out.print(">  ");
     }
 
