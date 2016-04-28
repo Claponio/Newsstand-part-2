@@ -26,7 +26,6 @@ class AppInterface
      */
     public AppInterface()
     {
-        //TODO: Replace "new DummyApplication" with your application class.
         this.application = new Application();
         this.inputScanner = new InputScanner();
         this.defaultMenuPosition = 0;

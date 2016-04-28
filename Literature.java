@@ -10,9 +10,9 @@
  */
 public abstract class Literature 
 {
-    private String title;           //Title of the literature
-    private String publisher;       //Publisher of the literature
-    private String genre;           //Genre of the literature
+    private final String title;           //Title of the literature
+    private final String publisher;       //Publisher of the literature
+    private final String genre;           //Genre of the literature
     private double price;           //Price of the literature in NOK
     
     

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -116,6 +117,11 @@ public class Register
         }
         
     return list.iterator();
+    }
+    
+    public List<Literature> getRegister()
+    {
+        return this.collection;
     }
     
         
